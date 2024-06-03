@@ -8,9 +8,7 @@ use Illuminate\View\Component;
 
 class BookCard extends Component
 {
-    /**
-     * Create a new component instance.
-     */
+
     public function __construct()
     {
         //
@@ -19,8 +17,8 @@ class BookCard extends Component
     /**
      * Get the view / contents that represent the component.
      */
-    public function render(): View|Closure|string
+    public function render()
     {
-        return view('components.book-card');
+        return view('components.success-message');
     }
 }

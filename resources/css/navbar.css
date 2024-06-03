@@ -4,7 +4,7 @@
     align-items: center;
     padding: 15px 30px;
     background-color: #000000;
-    background-color: #45B08C;
+    background-color: #45b08c;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
@@ -85,7 +85,7 @@
 
 .username {
     font-size: 18px;
-    font-family: 'Arial', sans-serif;
+    font-family: "Arial", sans-serif;
 }
 
 .profile-img {
@@ -106,7 +106,7 @@
 }
 
 .auth-link:hover {
-    color: #yourTextColor;
+    color: #000000;
 }
 
 .separator {

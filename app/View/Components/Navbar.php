@@ -2,22 +2,22 @@
 
 namespace App\View\Components;
 
-use Closure;
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Illuminate\Support\Facades\Auth;
 
 class Navbar extends Component
 {
-    public $name;
-    public function __construct()
+    public $searchKey;
+
+    public function __construct($searchKey = null)
     {
-        //
+        $this->searchKey = $searchKey;
     }
 
     /**
      * Get the view / contents that represent the component.
      */
-    public function render(): View|Closure|string
+    public function render()
     {
         return view('components.navbar');
     }

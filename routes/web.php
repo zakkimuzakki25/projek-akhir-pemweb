@@ -6,6 +6,9 @@ Route::get('/', function () {
     return view('pages/home');
 });
 
-Route::get('/popup', function () {
-    return view('popup-confirmation');
+Route::get('/profil', function () {
+    return view('pages/profile');
+});
+Route::get('/profil/favorit', function () {
+    return view('pages/favourite');
 });

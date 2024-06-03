@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../../css/favorite_syle.css">
 </head>
 <body>
-    @include('navbar') <!-- Menggunakan Navbar yang sudah ada -->
+    <x-navbar/>
 
     <div class="container mt-5">
         <div class="empty-favorite text-center">

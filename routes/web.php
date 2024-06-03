@@ -9,6 +9,7 @@ Route::get('/', function () {
 Route::get('/profil', function () {
     return view('pages/profile');
 });
+
 Route::get('/profil/favorit', function () {
     return view('pages/favourite');
 });

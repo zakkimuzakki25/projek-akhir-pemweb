@@ -1,0 +1,45 @@
+.book-card {
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 660px;
+    height: fit-content;
+    font-family: Arial, sans-serif;
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    margin: 20px;
+    background-color: #FFFFFF;
+}
+
+.book-header h1 {
+    color: #000000;
+    text-align: left;
+    font-size: 20px;
+}
+
+.book-header h2 {
+    color: #000000;
+    text-align: left;
+    font-size: 13px;
+}
+
+.book-image img {
+    display: block;
+    margin: 0px;   
+    width: 210px;
+    height: 250px;
+}
+
+.book-footer {
+    font-size: 10px;
+    color: #005662;
+    text-align: center;
+    border-top: 1px solid #15998E;
+    padding-top: 10px;
+}
+
+.book-card .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

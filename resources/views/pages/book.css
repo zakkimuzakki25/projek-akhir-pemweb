@@ -1,0 +1,19 @@
+.book-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.book-card img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.book-card h3 {
+    margin: 0;
+}
+
+.book-card p {
+    margin-bottom: 0;
+}

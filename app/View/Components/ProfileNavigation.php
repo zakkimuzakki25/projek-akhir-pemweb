@@ -8,12 +8,11 @@ use Illuminate\View\Component;
 
 class ProfileNavigation extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct()
+    public $loc;
+
+    public function __construct($loc)
     {
-        //
+        $this->loc = $loc;
     }
 
     /**

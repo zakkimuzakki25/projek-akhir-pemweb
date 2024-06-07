@@ -1,0 +1,17 @@
+body {
+    background-color: #E5F6FD; /* Warna latar sesuai dengan gambar yang diberikan */
+}
+
+.empty-favorite {
+    padding-top: 100px; /* Memberikan ruang di bagian atas */
+}
+
+.heart-icon {
+    margin-bottom: 20px; /* Ruang antara ikon dan teks */
+    opacity: 0.5; /* Membuat ikon sedikit transparan */
+}
+
+.empty-favorite h2 {
+    color: #333; /* Warna teks */
+    font-size: 24px; /* Ukuran font */
+}

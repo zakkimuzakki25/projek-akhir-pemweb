@@ -3,17 +3,17 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class Navbar extends Component
 {
     public $searchKey;
 
-    public function __construct($searchKey = null)
+    public function __construct(Request $request)
     {
-        $this->searchKey = $searchKey;
+        $this->searchKey = $request->query('key', null);
     }
-
+    
     /**
      * Get the view / contents that represent the component.
      */

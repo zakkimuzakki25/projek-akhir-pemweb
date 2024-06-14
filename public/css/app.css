@@ -1,5 +1,24 @@
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #eaeaea;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #45b08c;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #15998e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
 * {
-    font-family: 'Arial', sans-serif;
+    font-family: "Arial", sans-serif;
+    box-sizing: border-box;
 }
 
 body {
@@ -7,11 +26,20 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    background-image: linear-gradient(
+        to left top,
+        rgba(192, 220, 236, 1),
+        rgba(255, 255, 255, 0) 100%
+    );
+    background-attachment: fixed;
+    background-position: top;
+    background-size: cover;
 }
 
-body, html {
-    height: 100%;
+html,
+body {
+    height: fit-content;
+    min-height: 100%;
 }
 
 /* Navbar */
@@ -21,7 +49,7 @@ body, html {
     align-items: center;
     padding: 15px 30px;
     background-color: #000000;
-    background-color: #45B08C;
+    background-color: #45b08c;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
@@ -102,7 +130,7 @@ body, html {
 
 .username {
     font-size: 18px;
-    font-family: 'Arial', sans-serif;
+    font-family: "Arial", sans-serif;
 }
 
 .profile-img {
@@ -133,13 +161,14 @@ body, html {
 /* Profile Navigation */
 
 .sidebar-profile {
+    flex-shrink: 0;
     display: flex;
     box-sizing: border-box;
     width: 350px;
-    height: 100%;
+    /* height: 100%; */
     flex-direction: column;
     align-items: center;
-    background-color: #45B08C;
+    background-color: #45b08c;
     padding: 44px 0;
     gap: 25px;
 }
@@ -181,4 +210,144 @@ body, html {
 
 .logout-button:hover {
     color: black;
+}
+
+/* Book Card */
+.card {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    width: 250px;
+    height: fit-content;
+    font-family: Schibsted Grotesk;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    gap: 10px;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 15px;
+}
+
+.card .bookbg {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    height: 250px;
+    background-color: #c0dcec;
+    padding: 10px;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.card img {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 144px;
+    display: block;
+    margin: auto;
+}
+
+.card h1 {
+    color: #000000;
+    font-size: 18px;
+    margin: 0;
+}
+
+.card button {
+    padding: 5px 60px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+button.primary1 {
+    background-color: #15998e;
+    color: white;
+    border: none;
+}
+
+button.primary2 {
+    background-color: white;
+    color: black;
+    border: 2px solid #15998e;
+}
+
+.card button:hover {
+    filter: brightness(90%);
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    flex-shrink: 0;
+    height: 75px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #008080;
+    background-color: #ffffff;
+}
+
+.footer-text {
+    margin: 0;
+}
+
+/* Cart Book Card */
+
+.cart-book-card {
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: fit-content;
+    font-family: Arial, sans-serif;
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    margin: 20px;
+    background-color: #ffffff;
+}
+
+.book-header h1 {
+    color: #000000;
+    text-align: left;
+    font-size: 24px;
+}
+
+.book-header p {
+    color: #000000;
+    text-align: left;
+    font-size: 14px;
+}
+
+.book-image img {
+    display: block;
+    margin: 0px;
+    width: 150px;
+}
+
+.book-footer {
+    font-size: 10px;
+    color: #005662;
+    text-align: center;
+    border-top: 1px solid #15998e;
+    padding-top: 10px;
+}
+
+.cart-book-card .info {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.checkbox-sec {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    border-left: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+.book-checkbox {
+    width: 18px;
 }

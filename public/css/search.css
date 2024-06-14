@@ -1,0 +1,99 @@
+.main-content {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.filter-sec {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 325px;
+    flex-shrink: 0;
+    padding: 40px 30px;
+}
+
+.filter-sec h1 {
+    font-size: 24px;
+}
+
+.filter-sec .filter-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    gap: 15px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.filter-sec .filter-box label {
+    font-size: 18px;
+}
+
+.filter-sec .filter-box .check-box {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.check-box input, .check-box p {
+    padding: 0;
+    margin: 0;
+    height: fit-content;
+}
+
+.book-sec {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 15px;
+    padding: 30px 25px;
+    font-size: 24px;
+}
+
+.book-sec .sortir {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+}
+
+.book-sec .sortir button {
+    padding: 5px 20px;
+    background-color: white;
+    border: 2px solid #48BCD1;
+    font-size: 14px;
+}
+
+.book-sec .sortir button.active {
+    padding: 5px 20px;
+    background-color: #48BCD1;
+    color: white;
+}
+
+.book-sec .list-book {
+    justify-items: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px 0px;
+}
+
+.book-sec .empty {
+    display: flex;
+    height: 400px;
+    align-items: center;
+    align-self: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.label-list {
+    font-weight: bold;
+    font-size: 32px;
+}

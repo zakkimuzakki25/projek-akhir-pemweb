@@ -1,46 +1,76 @@
-<link rel="stylesheet" type="text/css" href="../../css/register.css">
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendaftaran Anggota - Ngalam Library</title>
+    <title>Daftar - Ngalaam Library</title>
+    <link rel="icon" href="{{ asset('logo/Logo-0.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
 </head>
+
 <body>
-    <div class="container">
-        <div class="left-section">
-            <div class="overlay">
-                <h1>Your passport to <br>
-                <br>to</br> <br>
-                </b> rendless adventures</h1>
-            </div>
+    <div class="flex-container">
+        <div class="logo-container">
+            <a href="/"><img class="logo" src="{{ asset('logo/Logo-1.svg') }}" alt="Ngalaam Library Logo" /></a>
         </div>
-        <div class="right-section">
-            <div class="logo">
-                <img src="../../../public/logo/Logo.png" alt="Ngalam Library Logo">
-                
+        <div class="content-container">
+            <div style="background-image: url('{{ asset('images/bg-auth.jpg') }}');" class="image-container">
+                <div class="image-container-layer">
+                    <div class="text-overlay">Your passport to endless adventures</div>
+                </div>
             </div>
-            <h2>Pendaftaran Anggota</h2>
-            <form>
-                <label for="name">Nama Lengkap:</label>
-                <input type="text" id="name" name="name" placeholder="enter your full name here">
-                
-                <label for="username">Nama Pengguna:</label>
-                <input type="text" id="username" name="username" placeholder="enter your username here">
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="enter your email here">
-                
-                <label for="address">Alamat di Malang:</label>
-                <input type="text" id="address" name="address" placeholder="enter your address here">
-                
-                <label for="password">Kata Sandi:</label>
-                <input type="password" id="password" name="password" placeholder="enter your password here">
-                
-                <button type="submit">Daftar</button>
+
+            <form method="POST" action="{{ route('daftar.submit') }}">
+                @csrf
+                <div class="form-content">
+                    <div class="form-header">Pendaftaran Anggota</div>
+                    <div class="form-group">
+                        <label for="nama_lengkap">Nama Lengkap</label>
+                        <input type="text" id="nama_lengkap" name="nama_lengkap" placeholder="enter your fullname here"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nama_pengguna">Nama Pengguna</label>
+                        <input type="text" id="nama_pengguna" name="nama_pengguna" placeholder="enter your username here"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="enter your email here" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat">Alamat di Malang</label>
+                        <input type="text" id="alamat" name="alamat" placeholder="enter your address here" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Kata Sandi</label>
+                        <input type="password" id="password" name="password" placeholder="enter your password here"
+                            required>
+                    </div>
+                    @if ($errors->any())
+                        <div class="error-message">
+                            <div>
+                                @foreach ($errors->all() as $error)
+                                    <div>{{ $error }}</div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                    <button type="submit" class="primary1">Daftar</button>
+                    <div class="or-divider">
+                        <span class="line"></span>
+                        <span class="text">Or</span>
+                        <span class="line"></span>
+                    </div>
+                    <div class="register-link">
+                        Sudah mendaftar? <a href="{{ route('login') }}">Masuk</a>
+                    </div>
+                </div>
             </form>
-            <p>Sudah mendaftar? <a href="login.blade.php">Masuk</a></p>
         </div>
     </div>
 </body>
+
 </html>

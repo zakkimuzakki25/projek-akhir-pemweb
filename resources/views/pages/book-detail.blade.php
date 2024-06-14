@@ -1,102 +1,181 @@
-<link rel="stylesheet" type="text/css" href="../../css/book-detail.css">
-<link rel="stylesheet" type="text/css" href="../../css/navbar.css">
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Great Gatsby - Book Details</title>
+    <title>{{ $book->judul_buku }} - Book Details</title>
+    <link rel="icon" href="{{ asset('logo/Logo-0.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/book-detail.css') }}">
 </head>
+
 <body>
-<link rel="stylesheet" href="../../css/navbar.css">
-<div class="navbar">
-    <div class="navbar-logo">
-        <a href="/">
-            <img class="logo" src="../../../public/logo/Logo-4.svg" alt="Logo Seacrust" />
-        </a>
-    </div>
+    <x-navbar />
 
-    <div class="navbar-center">
-        <form action="{{ url('/search') }}" method="GET" class="search-form">
-            <button class="search-button" type="submit">
-                <img src="../../../public/icon/Search.svg" alt="Search Icon" class="search-icon" />
-            </button>
-            <input type="text" id="key" name="key" placeholder="{{ $searchKey ? $searchKey : 'Search' }}" class="search-input" autoComplete="off" required />
-        </form>
-        <a href="{{ url('/user/favourite') }}" class="icon-link">
-            <img src="../../../public/icon/Favourite.svg" alt="Favourite Icon" class="icon" />
-        </a>
-        <a href="{{ url('/user/cart') }}" class="icon-link">
-            <img src="../../../public/icon/Cart.svg" alt="Cart Icon" class="icon" />
-        </a>
-    </div>
-
-    <div class="navbar-end">
-        <!-- @if(Auth::check()) -->
-            <a href="{{ url('/user/profile') }}" class="profile-link">
-                <span class="username">Muhammad Iqbal Muzakki</span>
-                <img src="../../../public/icon/sidebar/Profile.svg" alt="Profile" class="profile-img" />
-            </a>
-        <!-- @else
-            <div class="auth-links">
-                <a href="{{ url('/login') }}" class="auth-link">Log In</a>
-                <span class="separator">|</span>
-                <a href="{{ url('/register') }}" class="auth-link">Registration</a>
-            </div>
-        @endif -->
-    </div>
-</div>
-
-
-    <div class="book-container">
-        <div class="left-section">
-            <div class="book-image">
-                <img src="https://penerbitdeepublish.com/wp-content/uploads/2020/11/Cover-Buku-DIGITAL-MARKETING-MELALUI-APLIKASI-PLAYSTORE_Usman-Chamdani-depan-scaled-1.jpg" 
-                alt="The Great Gatsby Cover">
-                
-            </div>
-            <div class="book-card">
-                <p>Author: </p>
-                <h1>Drs. Usman Chamdani</h1>
-            </div>
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="{{ url('/rekomendasi') }}">Books</a> >
+            <div>{{$book->judul_buku}}</div>
         </div>
-        <div class="right-section">
-            <div class="text-box">
-                <h1>Digital Marketing</h1>
-                <p class="year">2020</p>
-                <p class="author">by Drs. Usman Chamdani (Author)</p>
-                <div class="rating">
-                    ★★★★☆ 4.5 (851)
-                    <button class="love-button">❤</button> <!-- Love button -->
+
+        <div class="content">
+            <div class="left">
+                <div class="image-container">
+                    <img src="{{ $book->photo }}" alt="{{ $book->judul_buku }} Cover" />
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sagittis eu volutpat odio facilisis mauris sit. Purus gravida quis blandit turpis cursus. Nulla porttitor massa id neque. Enim praesent elementum facilisis leo. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Leo a diam sollicitudin tempor id. Nunc congue nisi vitae suscipit tellus mauris.</p>
-                <div class="content-row">
-                    <div class="reviews">
-                        <h2>Penilaian Buku</h2>
-                        <!-- Example review -->
-                        <div class="review">
-                            <strong>@akdakd</strong>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                            <strong>@kiwkwiw</strong>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                            <strong>@panerfef</strong>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                        </div>
-                        <!-- Add more reviews as needed -->
+            </div>
+
+            <div class="middle">
+                <div class="book-info">
+                    <h1>{{ $book->judul_buku }}</h1>
+                    <p class="year">{{ $book->tahun_terbit }}</p>
+                    <p class="author">by <span>{{ $book->penulis }}</span> (Author)</p>
+                    <p class="jenis-buku">Jenis Buku:
+                        @foreach ($book->jenisBuku as $jenis)
+                            <span>{{ $jenis->nama_jenis_buku }}</span>{{ !$loop->last ? ',' : '' }}
+                        @endforeach
+                    </p>
+                    <div class="rating">
+                        <button class="love-button" onclick="handleFavClick({{ $book->id }})">
+                            <img src="{{ $fav ? asset('icon/fav/fav-fill.svg') : asset('icon/fav/fav-border.svg') }}"
+                                alt="{{ $fav ? 'Favorited' : 'Not Favorited' }}" />
+                        </button>
                     </div>
-                    <div class="borrow-section">
-                        <h3>Borrow Now</h3>
-                        <p class="availability">Hanya 1 lagi</p>
-                        <p class="return-date">Tanggal dan Jam Pengembalian: 10 June 2024 19:40:4</p>
-                        <button class="borrow-button">Borrow</button>
-                        <button class="reservation-button">Reservation</button>
-                        <button class="cart-button">Add to Cart</button>
+                    <p class="description">{{ $book->sinopsis }}</p>
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="actions">
+                    <div class="borrow-info">
+                        <h3>Pinjam Sekarang</h3>
+                        <p class="availability">{{ $book->ketersediaan ? 'Tersedia' : 'Tidak tersedia' }}</p>
+                        @if($book->ketersediaan && $book->status_peminjaman != 'belum diambil')
+                            <button class="btn borrow-btn" onclick="borrowHandle()">Borrow</button>
+                            <button class="btn cart-btn" onclick="addToCart({{ $book->id }})">+ Keranjang</button>
+                        @endif
                     </div>
                 </div>
+            </div>
+
+            <div class="popup-conf" style="display: none;">
+                @include('components.pop-up-confirmation', ['noHandle' => 'noHandle()', 'yesHandle' => 'yesHandle()'])
+            </div>
+            <div class="popup-succ" style="display: none;">
+                @include('components.pop-up-success', ['pickupTime' => $pickupTime])
             </div>
         </div>
     </div>
 
-    <script src="{{ asset('js/history-book-card.js') }}"></script>
+    <script>
+        let borrowClicked = false;
+
+        const handleFavClick = (bookId) => {
+            fetch('{{ route("book.favorite") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                },
+                body: JSON.stringify({ book_id: bookId }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const favIcon = document.getElementById('fav-icon');
+                    if (data.status === 'added') {
+                        favIcon.src = '{{ asset("icon/fav/fav-fill.svg") }}';
+                        favIcon.alt = 'Favorited';
+                    } else if (data.status === 'removed') {
+                        favIcon.src = '{{ asset("icon/fav/fav-border.svg") }}';
+                        favIcon.alt = 'Not Favorited';
+                    }
+                })
+                .catch(error => console.error('Error:', error))
+                .finally(() => {
+                    location.reload();
+                });
+        };
+
+        const borrowHandle = () => {
+            if (!borrowClicked) {
+                borrowClicked = true;
+                document.querySelector('.popup-conf').style.display = 'block';
+            }
+        };
+
+        const yesHandle = () => {
+            if (borrowClicked) {
+                const bookId = {{ $book->id }};
+                fetch('{{ route("book.borrow") }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    },
+                    body: JSON.stringify({ book_id: bookId }),
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            document.querySelector('.popup-conf').style.display = 'none';
+                            document.querySelector('.popup-succ').style.display = 'block';
+                        } else {
+                            throw new Error('Server indicated failure');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Buku tidak tersedia');
+                    })
+                    .finally(() => {
+                        borrowClicked = false;
+                    });
+            }
+        };
+
+        const noHandle = () => {
+            if (borrowClicked) {
+                borrowClicked = false;
+                document.querySelector('.popup-conf').style.display = 'none';
+            }
+        };
+
+        const addToCart = (bookId) => {
+            fetch('{{ route("add.to.cart") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                },
+                body: JSON.stringify({ book_id: bookId }),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        window.location.href = '/keranjang';
+                    } else {
+                        throw new Error('Server response indicated failure');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Buku sedang dipinjam atau sudah berada di keranjang anda');
+                });
+        };
+    </script>
+
 </body>
+
 </html>

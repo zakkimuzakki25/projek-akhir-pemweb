@@ -2,16 +2,19 @@
 
 namespace App\View\Components;
 
-use Closure;
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class BookCard extends Component
 {
+    public $id;
+    public $photo;
+    public $judul_buku;
 
-    public function __construct()
+    public function __construct($id, $photo, $judul_buku)
     {
-        //
+        $this->id = $id;
+        $this->photo = $photo;
+        $this->judul_buku = $judul_buku;
     }
 
     /**
@@ -19,6 +22,6 @@ class BookCard extends Component
      */
     public function render()
     {
-        return view('components.success-message');
+        return view('components.book-card');
     }
 }

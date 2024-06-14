@@ -4,7 +4,7 @@
         <img src="{{ asset('icon/sidebar/Profile.svg') }}" class="icon" />
         <div>Profil</div>
     </a>
-    <a href="{{ route('profile.showBook') }}" class="{{ Request::path() == 'pinjaman' ? 'active' : '' }} sidebar-link">
+    <a href="{{ route('profile.showBook') }}" class="{{ Request::path() == 'pinjaman' || Request::path() == 'riwayat-pinjaman' ? 'active' : '' }} sidebar-link">
         <img src="{{ asset('icon/sidebar/Order.svg') }}" class="icon" />
         <div>Buku</div>
     </a>

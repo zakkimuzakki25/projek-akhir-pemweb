@@ -1,37 +1,62 @@
-<link rel="stylesheet" type="text/css" href="../../css/login.css">
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masuk - Ngalam Library</title>
+    <title>Masuk - Ngalaam Library</title>
+    <link rel="icon" href="{{ asset('logo/Logo-0.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
 </head>
+
 <body>
-    <div class="container">
-        <div class="left-section">
-            <div class="overlay">
-                <h1>Your passport to<br>
-                <br>to</br> <br>
-                </b> rendless adventures</h1>
-            </div>
+    <div class="flex-container">
+        <div class="logo-container">
+            <a href="/"><img class="logo" src="{{ asset('logo/Logo-1.svg') }}" alt="Ngalaam Library Logo" /></a>
         </div>
-        <div class="right-section">
-            <div class="logo">
-                <img src="../../../public/logo/Logo.png" alt="Ngalam Library Logo">
-                
+        <div class="content-container">
+            <div style="background-image: url('{{ asset('images/bg-auth.jpg') }}');" class="image-container">
+                <div class="image-container-layer">
+                    <div class="text-overlay">Your passport to endless adventures</div>
+                </div>
             </div>
-            <h2>Masuk</h2>
-            <form>
-                <label for="name">Nama Pengguna/Email:</label>
-                <input type="text" id=" name" name="name" placeholder="enter your username or email here">
-                
-                <label for="password">Kata Sandi:</label>
-                <input type="password" id="password" name="password" placeholder="enter your password here">
-                
-                <button type="submit">Masuk</button>
+
+            <form method="POST" action="{{ route('login.submit') }}">
+                @csrf
+                <div class="form-content">
+                    <div class="form-header">Masuk</div>
+                    <div class="form-group">
+                        <label for="email">Nama Pengguna/Email</label>
+                        <input type="text" id="email" name="email" placeholder="enter your username or email here"
+                            value="{{ old('email') }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Kata Sandi</label>
+                        <input type="password" id="password" name="password" placeholder="enter your password here">
+                    </div>
+                    @if ($errors->any())
+                        <div class="error-message">
+                            <div>
+                                @foreach ($errors->all() as $error)
+                                    <div>{{ $error }}</div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                    <button type="submit" class="primary1">Masuk</button>
+                    <div class="or-divider">
+                        <span class="line"></span>
+                        <span class="text">Or</span>
+                        <span class="line"></span>
+                    </div>
+                    <div class="register-link">
+                        Belum mendaftar? <a href="{{ route('daftar') }}">Daftar</a>
+                    </div>
+                </div>
             </form>
-            <p>Belum mendaftar? <a href="register.blade.php">Daftar</a></p>
         </div>
     </div>
 </body>
+
 </html>

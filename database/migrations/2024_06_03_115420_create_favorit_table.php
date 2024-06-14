@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('favorit', function (Blueprint $table) {
-            $table->foreignId('id_pengguna')->constrained('pengguna');
-            $table->foreignId('id_buku')->constrained('buku');
+        Schema::create('favorits', function (Blueprint $table) {
+            $table->unsignedInteger('id_pengguna');
+            $table->unsignedInteger('id_buku');
             $table->primary(['id_pengguna', 'id_buku']);
+
+            $table->foreign('id_pengguna')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_buku')->references('id')->on('bukus')->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 

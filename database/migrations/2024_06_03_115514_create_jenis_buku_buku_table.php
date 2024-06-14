@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jenis_buku_buku', function (Blueprint $table) {
-            $table->foreignId('id_jenis_buku')->constrained('jenis_buku');
-            $table->foreignId('id_buku')->constrained('buku');
+        Schema::create('jenis_buku_bukus', function (Blueprint $table) {
+            $table->unsignedInteger('id_jenis_buku');
+            $table->unsignedInteger('id_buku');
             $table->primary(['id_jenis_buku', 'id_buku']);
+
+            $table->foreign('id_jenis_buku')->references('id')->on('jenis_bukus')->onDelete('cascade');
+            $table->foreign('id_buku')->references('id')->on('bukus')->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 

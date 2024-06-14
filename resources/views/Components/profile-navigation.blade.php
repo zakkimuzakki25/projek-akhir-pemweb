@@ -14,4 +14,21 @@
     </a>
     <button onclick="logoutHandle()" class="logout-button">Keluar</button>
 </div>
-<script src="{{ resource_path('js/profile-navigation.js') }}"></script>
+<script>
+function logoutHandle() {
+    fetch('/keluar', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({}),
+    })
+    .then(response => {
+        if (response.ok) {
+            window.location.href = '/login';
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+</script>

@@ -12,7 +12,7 @@ Route::middleware(['web'])->group(function () {
 
     Route::get('/login', [ProfileController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [ProfileController::class, 'login'])->name('login.submit');
-
+    
     Route::middleware(['auth'])->group(function () {
         Route::get('/profil', [ProfileController::class, 'showProfile'])->name('profile.show');
         Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
@@ -20,6 +20,7 @@ Route::middleware(['web'])->group(function () {
         Route::get('/riwayat-pinjaman', [ProfileController::class, 'showProfileBookHistory'])->name('profile.showBookHistory');
         Route::get('/favorit', [ProfileController::class, 'showProfileFavourite'])->name('profile.showFavourite');
         Route::get('/keranjang', [ProfileController::class, 'showProfileCart'])->name('profile.showCart');
+        Route::post('/keluar', [ProfileController::class, 'keluar'])->name('keluar');
 
         Route::post('/book/favorite', [BookController::class, 'toggleFavorite'])->name('book.favorite');
         Route::post('/book/borrow', [BookController::class, 'borrowBook'])->name('book.borrow');

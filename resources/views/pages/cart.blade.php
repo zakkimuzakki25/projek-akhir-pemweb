@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     <title>Keranjang - Ngalaam Library</title>
     <link rel="icon" href="{{ asset('logo/Logo-0.svg') }}" type="image/svg+xml">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<meta name="csrf-token" content="{{ csrf_token() }}">    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 </head>
 

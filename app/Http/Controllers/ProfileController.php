@@ -148,4 +148,14 @@ class ProfileController extends Controller
         return redirect()->route('profile.show')->with('success', 'Profil berhasil diperbarui.');
     }
 
+    public function keluar(Request $request)
+    {
+    Auth::logout();
+
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect()->route('login')->with('success', 'Anda telah berhasil keluar.');
+}
+
 }

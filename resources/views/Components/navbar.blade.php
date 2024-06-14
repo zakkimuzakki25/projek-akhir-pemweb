@@ -35,7 +35,7 @@
             <div class="auth-links">
                 <a href="{{ url('/login') }}" class="auth-link">Masuk</a>
                 <span class="separator">|</span>
-                <a href="{{ url('/register') }}" class="auth-link">Daftar</a>
+                <a href="{{ url('/daftar') }}" class="auth-link">Daftar</a>
             </div>
         @endif
     </div>

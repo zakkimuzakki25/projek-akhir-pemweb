@@ -1,0 +1,47 @@
+# railway.toml
+
+version = 2
+
+[variables]
+PHP_VERSION = "8.2"
+
+[[services]]
+  builder = "NIXPACKS"
+  buildCommand = '''
+    composer install --no-dev --optimize-autoloader --ignore-platform-reqs
+  '''
+
+  [services.deploy]
+    runtime = 'php{{ PHP_VERSION }}.withExtensions (pe: pe.enabled ++ [])'
+    numReplicas = 1
+    sleepApplication = false
+    restartPolicyType = "ON_FAILURE"
+    restartPolicyMaxRetries = 10
+
+    [services.deploy.env]
+    PORT = 8080
+    APP_NAME = "Laravel"
+    APP_ENV = "local"
+    APP_KEY = "base64:FbfmXokOi+4pDYY+s9sc22pQgsMfLdtRunyD+Sc5mVA="
+    APP_DEBUG = "true"
+    APP_TIMEZONE = "UTC"
+    APP_URL = "http://localhost"
+    
+    DB_CONNECTION = "mysql"
+    DB_HOST = "roundhouse.proxy.rlwy.net"
+    DB_PORT = 59580
+    DB_DATABASE = "railway"
+    DB_USERNAME = "root"
+    DB_PASSWORD = "ITrQVLMioWmQecSFSXMFsWWgaSseJSAl"
+    
+    SESSION_DRIVER = "database"
+    CACHE_STORE = "database"
+    
+    MAIL_MAILER = "log"
+    MAIL_HOST = "127.0.0.1"
+    MAIL_PORT = 2525
+    MAIL_USERNAME = null
+    MAIL_PASSWORD = null
+    MAIL_ENCRYPTION = null
+    MAIL_FROM_ADDRESS = "hello@example.com"
+    MAIL_FROM_NAME = "Laravel"

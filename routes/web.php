@@ -26,9 +26,9 @@ Route::middleware(['web'])->group(function () {
         Route::post('/book/borrow', [BookController::class, 'borrowBook'])->name('book.borrow');
         Route::post('/add-to-cart', [BookController::class, 'addToCart'])->name('add.to.cart');
         Route::post('/cart/borrow', [BookController::class, 'borrowBooks'])->name('cart.borrow');
+        Route::get('/buku/{id}', [BookController::class, 'showBookDetail'])->name('book.detail');
     });
 
     Route::get('/cari', [BookController::class, 'searchPage'])->name('book.search');
     Route::get('/rekomendasi', [BookController::class, 'recommendationPage'])->name('book.recommendation');
-    Route::get('/buku/{id}', [BookController::class, 'showBookDetail'])->name('book.detail');
 });
